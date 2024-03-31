@@ -1,0 +1,30 @@
+{
+  "products": [
+    { "rpn": { "confidence": 100, "value": "123" } },
+    { "rpn": { "confidence": 100, "value": "456" } },
+    { "rpn": { "confidence": 100, "value": "789" } }
+  ],
+  "store_city": { "confidence": 100, "value": "San Jose" },
+  "store_state": { "confidence": 100, "value": "CA" },
+  "store_street": { "confidence": 100, "value": "777 Story Rd" },
+  "store_zip": { "confidence": 100, "value": "95122" },
+  "subtotal": { "confidence": 99.69541931152344, "value": 63.86 },
+  "taxes": { "confidence": 99.55021667480469, "value": 5.99 },
+  "total": { "confidence": 100, "value": 69.85 },
+  "transaction": { "confidence": 99.95675659179688, "value": "00475" },
+  "default": {
+    "products": [
+      { "rpn": { "confidence": 100, "value": "123" } },
+      { "rpn": { "confidence": 100, "value": "456" } },
+      { "rpn": { "confidence": 100, "value": "789" } }
+    ],
+    "store_city": { "confidence": 100, "value": "San Jose" },
+    "store_state": { "confidence": 100, "value": "CA" },
+    "store_street": { "confidence": 100, "value": "777 Story Rd" },
+    "store_zip": { "confidence": 100, "value": "95122" },
+    "subtotal": { "confidence": 99.69541931152344, "value": 63.86 },
+    "taxes": { "confidence": 99.55021667480469, "value": 5.99 },
+    "total": { "confidence": 100, "value": 69.85 },
+    "transaction": { "confidence": 99.95675659179688, "value": "00475" }
+  }
+}

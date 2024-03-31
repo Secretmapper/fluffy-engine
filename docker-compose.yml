@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  receipt-api:
+    image: receipt-api
+    container_name: receipt-api
+    build:
+      context: ./receipt-api
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - SCAN_LOOKUP_API_ENDPOINT=http://54.235.15.200:8900
+      - PRODUCT_LOOKUP_API_ENDPOINT=http://product-lookup:4001/api/v1/lookup
+      - REDIS_HOST=receipt-api-redis
+      - REDIS_PASSWORD=dd721260bfe1b3d9601e7fbab36de6d04e2e67b0ef1c53de59d45950db0dd3cc
+      - REDIS_PORT=6380
+    restart: "no"
+    depends_on:
+      - product-lookup
+      - receipt-api-redis
+  receipt-api-redis:
+    image: redis:7.2.4-alpine
+    container_name: receipt-api-redis
+    ports:
+      - "4003:6380"
+    command: redis-server --bind 0.0.0.0 --port 6380 --requirepass dd721260bfe1b3d9601e7fbab36de6d04e2e67b0ef1c53de59d45950db0dd3cc
+    volumes:
+      - ./receipt-api-redis:/data
+    restart: always
+  product-lookup:
+    image: product-lookup
+    container_name: product-lookup
+    build:
+      context: ./product-lookup
+      dockerfile: Dockerfile
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+      - PRODUCT_LOOKUP_API_ENDPOINT=http://54.235.15.200:8899/lookup
+      - REDIS_HOST=product-lookup-redis
+      - REDIS_PASSWORD=dd721260bfe1b3d9601e7fbab36de6d04e2e67b0ef1c53de59d45950db0dd3cc
+      - REDIS_PORT=6379
+    restart: "no"
+    depends_on:
+      - product-lookup-redis
+  product-lookup-redis:
+    image: redis:7.2.4-alpine
+    container_name: product-lookup-redis
+    ports:
+      - "4002:6379"
+    command: redis-server --bind 0.0.0.0 --requirepass dd721260bfe1b3d9601e7fbab36de6d04e2e67b0ef1c53de59d45950db0dd3cc
+    volumes:
+      - ./product-lookup-redis:/data
+    restart: always
+
+volumes:
+  redis_data:

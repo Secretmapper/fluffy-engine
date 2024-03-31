@@ -1,0 +1,38 @@
+{
+  "name": "receipt-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "start": "node ./dist/server.js",
+    "dev": "tsx watch ./src/server.ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/multipart": "^8.2.0",
+    "@fastify/redis": "^6.1.1",
+    "@fastify/reply-from": "^9.7.0",
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.0.0",
+    "@sinclair/typebox": "^0.32.20",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.26.2",
+    "ioredis": "^5.3.2",
+    "ky": "^1.2.3",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.11.30",
+    "@types/uuid": "^9.0.8",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.7.1",
+    "typescript": "^5.4.3"
+  }
+}
